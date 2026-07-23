@@ -12,11 +12,11 @@
 
 ---
 
-## 📌 Executive Overview & Web Application Features
+##  Executive Overview & Web Application Features
 
 The **Enterprise Customer Segmentation AI Web Platform** is an end-to-end full-stack analytics application built for financial institutions to discover actionable customer personas within credit card portfolios. Built upon **8,950 customer profiles** across 18 financial metrics, the application delivers a modern responsive Glassmorphism dashboard interface, interactive Plotly 3D visualizers, automated REST APIs, and instant 50-page documentation downloads.
 
-### 🌟 Key Web Application Highlights
+###  Key Web Application Highlights
 - **Interactive Executive Dashboard**: Live KPI cards, Chart.js segment share donut plots, and financial metric comparison bars.
 - **Dataset Explorer**: Paginated datatable supporting instant CUST_ID search, cluster filtering, and raw/processed CSV exports.
 - **Clustering Analytics Lab**: Interactive WCSS Elbow Curve, Silhouette profile selector, and K-Means vs Hierarchical model comparison.
@@ -28,7 +28,7 @@ The **Enterprise Customer Segmentation AI Web Platform** is an end-to-end full-s
 
 ---
 
-## 🏗️ System & Full-Stack Architecture
+##  System & Full-Stack Architecture
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -68,7 +68,7 @@ The **Enterprise Customer Segmentation AI Web Platform** is an end-to-end full-s
 
 ---
 
-## 🖥️ Web Application Pages
+## Web Application Pages
 
 | Page | URL Path | Key Features |
 | :--- | :--- | :--- |
@@ -83,7 +83,7 @@ The **Enterprise Customer Segmentation AI Web Platform** is an end-to-end full-s
 
 ---
 
-## 🔌 REST API Endpoints
+## REST API Endpoints
 
 FastAPI automatically generates interactive Swagger documentation accessible at **`http://127.0.0.1:8000/docs`**.
 
@@ -120,7 +120,7 @@ FastAPI automatically generates interactive Swagger documentation accessible at 
 
 ---
 
-## 🚀 Deployment & Installation
+##  Deployment & Installation
 
 ### Option 1: Local Python Execution
 ```bash
@@ -157,7 +157,7 @@ To deploy to Render, create a new Web Service connected to your GitHub repositor
 
 ---
 
-## 📁 Complete Repository Directory Structure
+##  Complete Repository Directory Structure
 
 ```text
 week 04 IT Simplera/
@@ -220,5 +220,5 @@ week 04 IT Simplera/
 
 ---
 
-## 📜 License
+## License
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
