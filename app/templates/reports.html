@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">Reports & Export Download Center</h2>
+    <p class="text-muted small mb-0">Access enterprise technical specifications, executive reports, CSV datasets, and Jupyter notebook artifacts</p>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <!-- 30-50 Page Documentation PDF -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 d-flex align-items-center justify-content-between border-start border-4 border-danger">
+      <div class="d-flex align-items-center gap-3">
+        <div class="kpi-icon gradient-danger"><i class="fa-solid fa-file-pdf"></i></div>
+        <div>
+          <h5 class="fw-bold mb-1">Technical Specification (PDF)</h5>
+          <p class="small text-muted mb-0">50-Page Enterprise Report with figures, proofs & viva Q&As</p>
+          <span class="badge badge-amber mt-2">1.97 MB • PDF Document</span>
+        </div>
+      </div>
+      <a href="/api/reports/download/pdf" class="btn btn-gradient text-nowrap">
+        <i class="fa-solid fa-download me-1"></i> Download PDF
+      </a>
+    </div>
+  </div>
+
+  <!-- 30-50 Page Documentation DOCX -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 d-flex align-items-center justify-content-between border-start border-4 border-indigo">
+      <div class="d-flex align-items-center gap-3">
+        <div class="kpi-icon indigo"><i class="fa-solid fa-file-word"></i></div>
+        <div>
+          <h5 class="fw-bold mb-1">Technical Specification (DOCX)</h5>
+          <p class="small text-muted mb-0">Editable Microsoft Word Document with full styling & tables</p>
+          <span class="badge badge-indigo mt-2">7.28 MB • DOCX Document</span>
+        </div>
+      </div>
+      <a href="/api/reports/download/docx" class="btn btn-gradient text-nowrap">
+        <i class="fa-solid fa-download me-1"></i> Download DOCX
+      </a>
+    </div>
+  </div>
+
+  <!-- Segmented Customer Dataset CSV -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 d-flex align-items-center justify-content-between border-start border-4 border-emerald">
+      <div class="d-flex align-items-center gap-3">
+        <div class="kpi-icon emerald"><i class="fa-solid fa-file-csv"></i></div>
+        <div>
+          <h5 class="fw-bold mb-1">Segmented Customer Dataset (CSV)</h5>
+          <p class="small text-muted mb-0">8,950 Records appended with Cluster segment assignments</p>
+          <span class="badge badge-emerald mt-2">1.04 MB • CSV Dataset</span>
+        </div>
+      </div>
+      <a href="/api/reports/download/csv" class="btn btn-gradient text-nowrap">
+        <i class="fa-solid fa-download me-1"></i> Download CSV
+      </a>
+    </div>
+  </div>
+
+  <!-- Executed Jupyter Notebook -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 d-flex align-items-center justify-content-between border-start border-4 border-purple">
+      <div class="d-flex align-items-center gap-3">
+        <div class="kpi-icon purple"><i class="fa-solid fa-book-open"></i></div>
+        <div>
+          <h5 class="fw-bold mb-1">Executed Jupyter Notebook</h5>
+          <p class="small text-muted mb-0">100% Executed notebook with LaTeX math & inline plots</p>
+          <span class="badge badge-purple mt-2">840 KB • .ipynb File</span>
+        </div>
+      </div>
+      <a href="/api/reports/download/notebook" class="btn btn-gradient text-nowrap">
+        <i class="fa-solid fa-download me-1"></i> Download Notebook
+      </a>
+    </div>
+  </div>
+
+  <!-- Cluster Centroid Summary Statistics -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <div class="kpi-icon amber"><i class="fa-solid fa-table"></i></div>
+        <div>
+          <h5 class="fw-bold mb-1">Cluster Summary Statistics (CSV)</h5>
+          <p class="small text-muted mb-0">Centroid averages, medians, std, and customer counts</p>
+          <span class="badge badge-amber mt-2">1.65 KB • CSV File</span>
+        </div>
+      </div>
+      <a href="/api/reports/download/summary_csv" class="btn btn-outline-secondary text-nowrap rounded-pill px-3">
+        <i class="fa-solid fa-download me-1"></i> Download
+      </a>
+    </div>
+  </div>
+
+  <!-- Customer Personas Specification JSON -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <div class="kpi-icon indigo"><i class="fa-solid fa-code"></i></div>
+        <div>
+          <h5 class="fw-bold mb-1">Customer Personas Specification (JSON)</h5>
+          <p class="small text-muted mb-0">Structured persona JSON for CRM & Marketing integration</p>
+          <span class="badge badge-indigo mt-2">2.45 KB • JSON File</span>
+        </div>
+      </div>
+      <a href="/api/reports/download/personas_json" class="btn btn-outline-secondary text-nowrap rounded-pill px-3">
+        <i class="fa-solid fa-download me-1"></i> Download
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

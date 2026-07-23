@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">Dataset Explorer & Validation Laboratory</h2>
+    <p class="text-muted small mb-0">Interactive data inspection, feature summary statistics, missing values, and record filtering</p>
+  </div>
+  <a href="/api/reports/download/csv" class="btn btn-sm btn-gradient">
+    <i class="fa-solid fa-download me-1"></i> Export Cleaned CSV
+  </a>
+</div>
+
+<!-- METADATA SUMMARY CARDS -->
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Total Records</div>
+      <div class="kpi-val text-indigo mt-1">{{ summary.total_rows }}</div>
+      <div class="small text-muted mt-1">8,950 Customer Profiles</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Total Attributes</div>
+      <div class="kpi-val text-emerald mt-1">{{ summary.total_columns }}</div>
+      <div class="small text-muted mt-1">17 Numeric + CUST_ID</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Duplicates</div>
+      <div class="kpi-val text-amber mt-1">{{ summary.duplicates }}</div>
+      <div class="small text-muted mt-1">0 Duplicate Rows Found</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Imputed Missing Values</div>
+      <div class="kpi-val text-purple mt-1">314</div>
+      <div class="small text-muted mt-1">CREDIT_LIMIT & MIN_PAYMENTS</div>
+    </div>
+  </div>
+</div>
+
+<!-- DATATABLE EXPLORER -->
+<div class="glass-card p-4 mb-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold mb-0"><i class="fa-solid fa-table me-2 text-indigo"></i> Customer Record Table</h5>
+    <div class="d-flex gap-2">
+      <input type="text" id="cust-search" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Search CUST_ID (e.g. C10001)..." style="width: 250px;">
+      <select id="cluster-filter" class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 160px;">
+        <option value="">All Clusters</option>
+        <option value="0">Cluster 0 (Low Eng.)</option>
+        <option value="1">Cluster 1 (Cash Rev.)</option>
+        <option value="2">Cluster 2 (VIP Spend)</option>
+        <option value="3">Cluster 3 (Installment)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table custom-table align-middle" id="records-table">
+      <thead>
+        <tr id="table-headers">
+          <th>CUST_ID</th>
+          <th>BALANCE</th>
+          <th>PURCHASES</th>
+          <th>CASH_ADVANCE</th>
+          <th>CREDIT_LIMIT</th>
+          <th>PAYMENTS</th>
+          <th>TENURE</th>
+          <th>Cluster</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr><td colspan="8" class="text-center py-4 text-muted"><i class="fa-solid fa-spinner fa-spin me-2"></i> Loading dataset records...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINATION CONTROLS -->
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <span class="small text-muted" id="pagination-info">Showing page 1 of 448</span>
+    <div class="btn-group btn-group-sm">
+      <button id="btn-prev" class="btn btn-outline-secondary" disabled><i class="fa-solid fa-chevron-left"></i> Previous</button>
+      <button id="btn-next" class="btn btn-outline-secondary">Next <i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let currentPage = 1;
+const limit = 15;
+
+async function loadTableData(page = 1) {
+  const searchVal = document.getElementById('cust-search').value;
+  const clusterVal = document.getElementById('cluster-filter').value;
+
+  let url = `/api/dataset?page=${page}&limit=${limit}`;
+  if (searchVal) url += `&search=${encodeURIComponent(searchVal)}`;
+  if (clusterVal !== "") url += `&cluster=${clusterVal}`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  currentPage = data.page;
+  document.getElementById('pagination-info').innerText = `Page ${data.page} of ${data.total_pages} (${data.total_records.toLocaleString()} records)`;
+
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = '';
+
+  if (!data.records || data.records.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4 text-muted">No records match criteria.</td></tr>';
+    return;
+  }
+
+  data.records.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="fw-bold text-indigo">${r.CUST_ID}</td>
+      <td>$${r.BALANCE ? r.BALANCE.toLocaleString() : 0}</td>
+      <td>$${r.PURCHASES ? r.PURCHASES.toLocaleString() : 0}</td>
+      <td>$${r.CASH_ADVANCE ? r.CASH_ADVANCE.toLocaleString() : 0}</td>
+      <td>$${r.CREDIT_LIMIT ? r.CREDIT_LIMIT.toLocaleString() : 0}</td>
+      <td>$${r.PAYMENTS ? r.PAYMENTS.toLocaleString() : 0}</td>
+      <td>${r.TENURE} Months</td>
+      <td><span class="badge badge-indigo">Cluster ${r.Cluster}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('btn-prev').disabled = (currentPage <= 1);
+  document.getElementById('btn-next').disabled = (currentPage >= data.total_pages);
+}
+
+document.getElementById('btn-prev').addEventListener('click', () => { if (currentPage > 1) loadTableData(currentPage - 1); });
+document.getElementById('btn-next').addEventListener('click', () => { loadTableData(currentPage + 1); });
+document.getElementById('cust-search').addEventListener('input', () => { loadTableData(1); });
+document.getElementById('cluster-filter').addEventListener('change', () => { loadTableData(1); });
+
+loadTableData(1);
+</script>
+{% endblock %}

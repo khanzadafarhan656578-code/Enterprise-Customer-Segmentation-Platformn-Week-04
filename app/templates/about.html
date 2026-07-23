@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">About & Platform Architecture</h2>
+    <p class="text-muted small mb-0">System design specifications, tech stack matrix, and REST API documentation links</p>
+  </div>
+  <a href="/docs" target="_blank" class="btn btn-gradient">
+    <i class="fa-solid fa-code me-1"></i> Open Swagger API Docs
+  </a>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-lg-8">
+    <!-- SYSTEM OVERVIEW -->
+    <div class="glass-card p-4 mb-4">
+      <h4 class="fw-bold mb-3"><i class="fa-solid fa-brain text-indigo me-2"></i> Mission & Engineering Goals</h4>
+      <p class="text-secondary">
+        The Customer Segmentation Platform is an enterprise-grade AI analytics system built to analyze credit card customer behaviors, construct quantitative segment taxonomies, and formulate McKinsey-style business strategies. Designed to exceed standard benchmarks, it combines scalable unsupervised machine learning with a full-stack REST API and interactive dashboard interface.
+      </p>
+    </div>
+
+    <!-- TECH STACK MATRIX -->
+    <div class="glass-card p-4">
+      <h4 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-emerald me-2"></i> Technology Stack Matrix</h4>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 border rounded bg-dark bg-opacity-20">
+            <h6 class="fw-bold text-indigo"><i class="fa-solid fa-server me-2"></i> Backend Core</h6>
+            <ul class="small text-secondary mb-0 ps-3">
+              <li><strong>FastAPI</strong> — High-performance REST web framework</li>
+              <li><strong>Python 3.11/3.12</strong> — Core programming language</li>
+              <li><strong>SQLAlchemy & SQLite</strong> — Execution logging & database</li>
+              <li><strong>Pydantic v2</strong> — Data validation & settings</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 border rounded bg-dark bg-opacity-20">
+            <h6 class="fw-bold text-emerald"><i class="fa-solid fa-laptop-code me-2"></i> Machine Learning</h6>
+            <ul class="small text-secondary mb-0 ps-3">
+              <li><strong>Scikit-Learn</strong> — K-Means, Agglomerative, PCA, Scaler</li>
+              <li><strong>Pandas & NumPy</strong> — Data manipulation & log1p transform</li>
+              <li><strong>SciPy</strong> — Ward linkage hierarchical clustering</li>
+              <li><strong>Plotly & Chart.js</strong> — Interactive 2D/3D visualizations</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 border rounded bg-dark bg-opacity-20">
+            <h6 class="fw-bold text-amber"><i class="fa-solid fa-display me-2"></i> Frontend UI/UX</h6>
+            <ul class="small text-secondary mb-0 ps-3">
+              <li><strong>Jinja2 Templates</strong> — Dynamic HTML rendering</li>
+              <li><strong>Bootstrap 5.3</strong> — Responsive CSS framework</li>
+              <li><strong>Glassmorphism CSS</strong> — Custom Dark/Light theme</li>
+              <li><strong>Font Awesome 6</strong> — Scalable vector icon suite</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 border rounded bg-dark bg-opacity-20">
+            <h6 class="fw-bold text-purple"><i class="fa-solid fa-cloud-arrow-up me-2"></i> DevOps & Deployment</h6>
+            <ul class="small text-secondary mb-0 ps-3">
+              <li><strong>Docker & Compose</strong> — Multi-stage containerization</li>
+              <li><strong>Nginx</strong> — Production reverse proxy & caching</li>
+              <li><strong>Render / Railway</strong> — Cloud app hosting</li>
+              <li><strong>GitHub Actions</strong> — Continuous integration pipeline</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <!-- API ENDPOINTS CARD -->
+    <div class="glass-card p-4 mb-4">
+      <h5 class="fw-bold mb-3"><i class="fa-solid fa-plug me-2 text-indigo"></i> REST API Endpoints</h5>
+      <ul class="list-group list-group-flush bg-transparent small">
+        <li class="list-group-item bg-transparent text-secondary d-flex justify-content-between">
+          <code>GET /api/dataset</code> <span class="badge badge-emerald">Records</span>
+        </li>
+        <li class="list-group-item bg-transparent text-secondary d-flex justify-content-between">
+          <code>GET /api/metrics</code> <span class="badge badge-indigo">K-Means</span>
+        </li>
+        <li class="list-group-item bg-transparent text-secondary d-flex justify-content-between">
+          <code>GET /api/clusters</code> <span class="badge badge-purple">Centroids</span>
+        </li>
+        <li class="list-group-item bg-transparent text-secondary d-flex justify-content-between">
+          <code>GET /api/personas</code> <span class="badge badge-amber">Personas</span>
+        </li>
+        <li class="list-group-item bg-transparent text-secondary d-flex justify-content-between">
+          <code>GET /api/reports/download/{id}</code> <span class="badge badge-indigo">Downloads</span>
+        </li>
+        <li class="list-group-item bg-transparent text-secondary d-flex justify-content-between">
+          <code>GET /api/system/health</code> <span class="badge badge-emerald">Health</span>
+        </li>
+      </ul>
+      <a href="/docs" target="_blank" class="btn btn-sm btn-outline-secondary w-100 mt-3 rounded-pill">
+        Interactive OpenAPI Specs (/docs)
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

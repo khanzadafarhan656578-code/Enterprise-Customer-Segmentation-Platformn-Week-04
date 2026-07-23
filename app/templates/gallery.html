@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">Visualization Gallery & Visual Intelligence</h2>
+    <p class="text-muted small mb-0">High-resolution 300 DPI graphics and interactive Plotly 3D spatial visualizer</p>
+  </div>
+</div>
+
+<!-- PLOTLY 3D INTERACTIVE EMBED SECTION -->
+<div class="glass-card p-4 mb-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold mb-0"><i class="fa-solid fa-cube me-2 text-indigo"></i> Interactive 3D PCA Spatial Cluster Visualizer</h5>
+    <span class="badge badge-emerald"><i class="fa-solid fa-hand-pointer me-1"></i> Drag to Rotate / Scroll to Zoom</span>
+  </div>
+  <div class="ratio ratio-16x9 rounded-3 overflow-hidden border">
+    <iframe src="/charts_img/pca_3d_interactive.html" title="Interactive 3D PCA Plot" style="border: none;"></iframe>
+  </div>
+</div>
+
+<!-- STATIC GALLERY GRID -->
+<h4 class="fw-bold mb-3"><i class="fa-solid fa-images me-2 text-indigo"></i> Publication Graphics Gallery</h4>
+
+<div class="row g-4">
+  {% for c in charts %}
+  <div class="col-lg-4 col-md-6">
+    <div class="glass-card p-3 h-100 d-flex flex-column justify-content-between">
+      <div>
+        <div class="position-relative overflow-hidden rounded-3 mb-3 border">
+          <img src="/charts_img/{{ c.filename }}" class="img-fluid gallery-img" alt="{{ c.title }}" style="height: 220px; width: 100%; object-fit: cover;">
+          <span class="position-absolute top-0 end-0 m-2 badge badge-indigo">{{ c.category }}</span>
+        </div>
+        <h6 class="fw-bold mb-1">{{ c.title }}</h6>
+        <p class="small text-muted mb-3">{{ c.desc }}</p>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary w-100 rounded-pill" onclick="openModal('/charts_img/{{ c.filename }}', '{{ c.title }}', '{{ c.desc }}')">
+          <i class="fa-solid fa-expand me-1"></i> Preview
+        </button>
+        <a href="/charts_img/{{ c.filename }}" download="{{ c.filename }}" class="btn btn-sm btn-gradient rounded-pill px-3" title="Download High-Res PNG">
+          <i class="fa-solid fa-download"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- FULLSCREEN MODAL PREVIEW -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-light border-secondary">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title fw-bold" id="modalTitle">Chart Title</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="" id="modalImage" class="img-fluid rounded border mb-3" style="max-height: 75vh;" alt="Preview">
+        <p id="modalDesc" class="text-secondary mb-0"></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function openModal(imgUrl, title, desc) {
+  document.getElementById('modalImage').src = imgUrl;
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalDesc').innerText = desc;
+  new bootstrap.Modal(document.getElementById('imageModal')).show();
+}
+</script>
+{% endblock %}

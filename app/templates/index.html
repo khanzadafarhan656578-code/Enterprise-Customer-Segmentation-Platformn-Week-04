@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row align-items-center py-5">
+  <div class="col-lg-7">
+    <div class="mb-3">
+      <span class="badge badge-indigo text-uppercase px-3 py-2">
+        <i class="fa-solid fa-sparkles me-1"></i> Industry-Grade AI Analytics Platform
+      </span>
+    </div>
+    <h1 class="display-4 fw-extrabold mb-3">
+      Enterprise Customer <br>
+      <span style="background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Segmentation Platform</span>
+    </h1>
+    <p class="lead text-secondary mb-4">
+      An unsupervised machine learning system engineered to extract high-margin behavioral personas from financial credit card portfolios. Powered by K-Means, Hierarchical Clustering, and PCA.
+    </p>
+    <div class="d-flex flex-wrap gap-3 mb-4">
+      <a href="/dashboard" class="btn btn-gradient btn-lg">
+        <i class="fa-solid fa-gauge me-2"></i> Launch Executive Dashboard
+      </a>
+      <a href="/reports" class="btn btn-outline-secondary btn-lg rounded-pill px-4">
+        <i class="fa-solid fa-file-pdf me-2"></i> Download 50p Documentation
+      </a>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="glass-card p-4 animate-float text-center">
+      <img src="/charts_img/pca_2d_clusters.png" class="img-fluid rounded-3 mb-3 border" alt="2D PCA Clusters">
+      <h6 class="fw-bold mb-1">2D PCA Cluster Spatial Projection</h6>
+      <p class="small text-muted mb-0">Capturing 51.77% of dataset variance across 4 customer personas</p>
+    </div>
+  </div>
+</div>
+
+<!-- KPI QUICK STATS COUNTERS -->
+<div class="row g-4 mb-5">
+  <div class="col-md-3">
+    <div class="glass-card kpi-card">
+      <div class="kpi-icon indigo"><i class="fa-solid fa-users"></i></div>
+      <div>
+        <div class="kpi-val">8,950</div>
+        <div class="kpi-lbl">Customer Profiles</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="glass-card kpi-card">
+      <div class="kpi-icon emerald"><i class="fa-solid fa-diagram-project"></i></div>
+      <div>
+        <div class="kpi-val">4</div>
+        <div class="kpi-lbl">Target Personas</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="glass-card kpi-card">
+      <div class="kpi-icon amber"><i class="fa-solid fa-chart-line"></i></div>
+      <div>
+        <div class="kpi-val">0.2086</div>
+        <div class="kpi-lbl">Silhouette Score</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="glass-card kpi-card">
+      <div class="kpi-icon purple"><i class="fa-solid fa-file-contract"></i></div>
+      <div>
+        <div class="kpi-val">50 Pages</div>
+        <div class="kpi-lbl">DOCX & PDF Report</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SYSTEM ARCHITECTURE -->
+<div class="glass-card p-4 mb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h3 class="fw-bold mb-1"><i class="fa-solid fa-network-wired text-indigo me-2"></i> System Architecture</h3>
+      <p class="text-muted small mb-0">End-to-end data processing, machine learning pipeline, and API service layer</p>
+    </div>
+    <span class="badge badge-purple px-3 py-2">Production Build v2.0</span>
+  </div>
+
+  <div class="row text-center g-3">
+    <div class="col-md-3">
+      <div class="p-3 border rounded-3 bg-secondary bg-opacity-10">
+        <i class="fa-solid fa-database fs-2 text-primary mb-2"></i>
+        <h6 class="fw-bold">1. Data Ingestion</h6>
+        <p class="small text-muted mb-0">Raw CSV/Excel processing, median imputation, log1p transform</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 border rounded-3 bg-secondary bg-opacity-10">
+        <i class="fa-solid fa-gears fs-2 text-info mb-2"></i>
+        <h6 class="fw-bold">2. Preprocessing & Scaling</h6>
+        <p class="small text-muted mb-0">StandardScaler Z-score normalization across 17 attributes</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 border rounded-3 bg-secondary bg-opacity-10">
+        <i class="fa-solid fa-brain fs-2 text-success mb-2"></i>
+        <h6 class="fw-bold">3. Clustering & PCA</h6>
+        <p class="small text-muted mb-0">K-Means, Ward Linkage Hierarchical, and 2D/3D PCA Projections</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 border rounded-3 bg-secondary bg-opacity-10">
+        <i class="fa-solid fa-chart-column fs-2 text-warning mb-2"></i>
+        <h6 class="fw-bold">4. Business Intelligence</h6>
+        <p class="small text-muted mb-0">Persona heatmaps, radar fingerprints & McKinsey strategic roadmap</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

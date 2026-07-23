@@ -1,0 +1,54 @@
+{
+    "Cluster_0": {
+        "cluster_id": 0,
+        "persona_name": "Low Engagement / Inactive Cardholders",
+        "customer_count": 1472,
+        "market_share_percent": 16.45,
+        "average_balance": 115.36,
+        "average_purchases": 356.72,
+        "average_cash_advance": 140.51,
+        "average_credit_limit": 3639.22,
+        "average_payments": 767.04,
+        "description": "Low balance, low purchase frequency, under-utilized credit lines.",
+        "strategic_recommendation": "Re-engagement campaigns, cashback incentives on first $100 spend, fee waivers."
+    },
+    "Cluster_1": {
+        "cluster_id": 1,
+        "persona_name": "Cash-Advance Revolvers (High Risk)",
+        "customer_count": 3005,
+        "market_share_percent": 33.58,
+        "average_balance": 2477.89,
+        "average_purchases": 150.71,
+        "average_cash_advance": 2138.31,
+        "average_credit_limit": 4400.22,
+        "average_payments": 1803.42,
+        "description": "Heavy reliance on cash advances, low purchase activity, high interest risk, lower payment ratio.",
+        "strategic_recommendation": "Risk monitoring, APR reduction incentives for balance transfer, debt restructuring."
+    },
+    "Cluster_2": {
+        "cluster_id": 2,
+        "persona_name": "VIP High-Spenders & Active Transactors",
+        "customer_count": 2282,
+        "market_share_percent": 25.5,
+        "average_balance": 2179.61,
+        "average_purchases": 2838.33,
+        "average_cash_advance": 769.86,
+        "average_credit_limit": 6580.17,
+        "average_payments": 3077.35,
+        "description": "High credit limit, massive purchase volume, frequent card usage, strong payment habits.",
+        "strategic_recommendation": "VIP Concierge, Premium Rewards, Loyalty Tier Upgrade, Higher Credit Lines."
+    },
+    "Cluster_3": {
+        "cluster_id": 3,
+        "persona_name": "Budget Installment Buyers",
+        "customer_count": 2191,
+        "market_share_percent": 24.48,
+        "average_balance": 644.59,
+        "average_purchases": 695.4,
+        "average_cash_advance": 169.61,
+        "average_credit_limit": 3025.23,
+        "average_payments": 885.79,
+        "description": "Frequent installment purchases, moderate balances, steady monthly payment behavior.",
+        "strategic_recommendation": "Zero-EMIs, partner merchant discount promotions, targeted installment offers."
+    }
+}

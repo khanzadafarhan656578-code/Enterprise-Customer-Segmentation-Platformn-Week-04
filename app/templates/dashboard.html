@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">Executive Analytics Dashboard</h2>
+    <p class="text-muted small mb-0">Real-time customer portfolio segmentation metrics and business performance</p>
+  </div>
+  <a href="/reports" class="btn btn-sm btn-gradient">
+    <i class="fa-solid fa-download me-1"></i> Export Executive Report
+  </a>
+</div>
+
+<!-- TOP KPI METRICS GRID -->
+<div class="row g-3 mb-4">
+  <div class="col-xl-2 col-md-4">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Total Customers</div>
+      <div class="kpi-val text-indigo mt-1">{{ "{:,}".format(total_customers) }}</div>
+      <div class="small text-muted mt-1"><i class="fa-solid fa-check-circle text-success me-1"></i> 100% Validated</div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-md-4">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Optimal Clusters</div>
+      <div class="kpi-val text-emerald mt-1">{{ total_clusters }}</div>
+      <div class="small text-muted mt-1"><i class="fa-solid fa-brain text-info me-1"></i> Selected via Silhouette</div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-md-4">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Silhouette Score</div>
+      <div class="kpi-val text-amber mt-1">{{ silhouette_score }}</div>
+      <div class="small text-muted mt-1">High cluster separation</div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-md-4">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">WCSS Inertia</div>
+      <div class="kpi-val text-purple mt-1">{{ "{:,.0f}".format(wcss_score) }}</div>
+      <div class="small text-muted mt-1">Sum of squared distance</div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-md-4">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Calinski-Harabasz</div>
+      <div class="kpi-val text-info mt-1">{{ "{:,.0f}".format(calinski_score) }}</div>
+      <div class="small text-muted mt-1">Between/within variance ratio</div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-md-4">
+    <div class="glass-card p-3">
+      <div class="kpi-lbl">Davies-Bouldin</div>
+      <div class="kpi-val text-danger mt-1">{{ davies_bouldin }}</div>
+      <div class="small text-muted mt-1">Compactness metric</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHARTS ROW -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-4">
+    <div class="glass-card p-4 h-100">
+      <h5 class="fw-bold mb-3"><i class="fa-solid fa-chart-pie me-2 text-indigo"></i> Customer Share by Segment</h5>
+      <div style="height: 280px; position: relative;">
+        <canvas id="segmentDonutChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="glass-card p-4 h-100">
+      <h5 class="fw-bold mb-3"><i class="fa-solid fa-chart-column me-2 text-indigo"></i> Financial Metrics Comparison Across Segments</h5>
+      <div style="height: 280px; position: relative;">
+        <canvas id="clusterBarChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONAS OVERVIEW TABLE -->
+<div class="glass-card p-4">
+  <h5 class="fw-bold mb-3"><i class="fa-solid fa-users me-2 text-indigo"></i> Persona Summary & Strategic Focus</h5>
+  <div class="table-responsive">
+    <table class="table custom-table align-middle">
+      <thead>
+        <tr>
+          <th>Cluster</th>
+          <th>Persona Name</th>
+          <th>Customer Count</th>
+          <th>Market Share</th>
+          <th>Avg Balance</th>
+          <th>Avg Purchases</th>
+          <th>Avg Credit Limit</th>
+          <th>Strategic Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, p in personas.items() %}
+        <tr>
+          <td><span class="badge badge-indigo">Cluster {{ p.cluster_id }}</span></td>
+          <td class="fw-bold">{{ p.persona_name }}</td>
+          <td>{{ "{:,}".format(p.customer_count) }}</td>
+          <td><span class="badge badge-emerald">{{ p.market_share_percent }}%</span></td>
+          <td>${{ "{:,.2f}".format(p.average_balance) }}</td>
+          <td>${{ "{:,.2f}".format(p.average_purchases) }}</td>
+          <td>${{ "{:,.2f}".format(p.average_credit_limit) }}</td>
+          <td class="small text-secondary">{{ p.strategic_recommendation }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/dashboard.js"></script>
+{% endblock %}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }} - Customer Segmentation Platform</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom Stylesheets -->
+  <link href="/static/css/styles.css" rel="stylesheet">
+  <link href="/static/css/animations.css" rel="stylesheet">
+
+  <!-- Chart.js & Plotly.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+
+  <div id="wrapper">
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-brand">
+        <a href="/" class="brand-logo">
+          <i class="fa-solid fa-brain"></i>
+          <span>Segmentation AI</span>
+        </a>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-category">Overview</li>
+        <li class="nav-item">
+          <a href="/" class="nav-link-custom {% if active_page == 'landing' %}active{% endif %}">
+            <i class="fa-solid fa-house"></i>
+            <span>Landing Page</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/dashboard" class="nav-link-custom {% if active_page == 'dashboard' %}active{% endif %}">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Executive Dashboard</span>
+          </a>
+        </li>
+
+        <li class="sidebar-category">Analytics Engine</li>
+        <li class="nav-item">
+          <a href="/dataset" class="nav-link-custom {% if active_page == 'dataset' %}active{% endif %}">
+            <i class="fa-solid fa-database"></i>
+            <span>Dataset Explorer</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/clusters" class="nav-link-custom {% if active_page == 'clusters' %}active{% endif %}">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Clustering Lab</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/personas" class="nav-link-custom {% if active_page == 'personas' %}active{% endif %}">
+            <i class="fa-solid fa-users"></i>
+            <span>Customer Personas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/gallery" class="nav-link-custom {% if active_page == 'gallery' %}active{% endif %}">
+            <i class="fa-solid fa-images"></i>
+            <span>Visual Gallery</span>
+          </a>
+        </li>
+
+        <li class="sidebar-category">Exports & Info</li>
+        <li class="nav-item">
+          <a href="/reports" class="nav-link-custom {% if active_page == 'reports' %}active{% endif %}">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Reports & Exports</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/about" class="nav-link-custom {% if active_page == 'about' %}active{% endif %}">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>About & Swagger</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT WRAPPER -->
+    <div id="content-wrapper">
+      <!-- HEADER / TOPBAR -->
+      <header id="topbar">
+        <div class="topbar-left">
+          <button id="sidebar-toggle" class="toggle-sidebar-btn" title="Toggle Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="d-flex align-items-center gap-2">
+            <span class="pulse-indicator"></span>
+            <span class="badge badge-emerald">System Online</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/docs" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3" title="FastAPI Swagger API Docs">
+            <i class="fa-solid fa-code me-1"></i> API Docs
+          </a>
+          <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary rounded-pill dropdown-toggle px-3" type="button" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-user-circle me-1"></i> Enterprise Admin
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><a class="dropdown-item" href="/dashboard"><i class="fa-solid fa-gauge me-2"></i> Dashboard</a></li>
+              <li><a class="dropdown-item" href="/reports"><i class="fa-solid fa-download me-2"></i> Downloads</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="/docs"><i class="fa-solid fa-shield-halved me-2"></i> Security Docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN PAGE CONTENT -->
+      <main class="main-container animate-fade-in">
+        {% block content %}{% endblock %}
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="d-flex justify-content-between align-items-center">
+        <div>
+          <span>Enterprise Customer Segmentation AI Platform &copy; 2026</span>
+          <span class="ms-2 text-muted">| Powered by FastAPI, Scikit-Learn & Bootstrap 5</span>
+        </div>
+        <div>
+          <a href="/docs" class="text-muted me-3">REST API</a>
+          <a href="/about" class="text-muted">Architecture</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;"></div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Application Scripts -->
+  <script src="/static/js/theme.js"></script>
+  <script src="/static/js/main.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

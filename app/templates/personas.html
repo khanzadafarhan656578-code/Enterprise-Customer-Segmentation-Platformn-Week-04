@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-1">Customer Personas & Strategic Intelligence</h2>
+    <p class="text-muted small mb-0">Data-driven behavioral personas derived from cluster centroids and Z-score attribute analysis</p>
+  </div>
+  <a href="/reports" class="btn btn-sm btn-gradient">
+    <i class="fa-solid fa-file-pdf me-1"></i> Export Full Strategy PDF
+  </a>
+</div>
+
+<div class="row g-4 mb-4">
+  <!-- Cluster 2: VIP Spenders -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 h-100 border-start border-4 border-indigo">
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <span class="badge badge-indigo text-uppercase mb-2">Cluster 2 • Premium Tier</span>
+          <h4 class="fw-bold mb-1"><i class="fa-solid fa-crown text-warning me-2"></i> VIP High-Spenders & Active Transactors</h4>
+          <p class="text-muted small mb-0">2,282 Customers (25.50% Market Share)</p>
+        </div>
+        <span class="badge badge-emerald">Low Risk</span>
+      </div>
+
+      <div class="row g-2 mb-3 text-center">
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Balance</div><div class="fw-bold text-indigo">$2,179</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Purchases</div><div class="fw-bold text-emerald">$2,838</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Credit Limit</div><div class="fw-bold text-info">$6,580</div></div></div>
+      </div>
+
+      <p class="small text-secondary mb-3">
+        High credit limits, massive purchase volume, frequent card transactions, and strong payment ratios. Primary revenue driver for fee and merchant interchange income.
+      </p>
+
+      <div class="p-3 border rounded-3 bg-primary bg-opacity-10">
+        <h6 class="fw-bold text-indigo mb-1"><i class="fa-solid fa-lightbulb me-2"></i> McKinsey Strategic Recommendation</h6>
+        <p class="small mb-0 text-secondary">Deploy VIP Concierge onboarding, premium 3x points on luxury dining, automatic credit line increases, and lounge access upgrades.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cluster 1: Cash Revolvers -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 h-100 border-start border-4 border-danger">
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <span class="badge badge-amber text-uppercase mb-2">Cluster 1 • Revolver Tier</span>
+          <h4 class="fw-bold mb-1"><i class="fa-solid fa-triangle-exclamation text-danger me-2"></i> Cash-Advance Revolvers</h4>
+          <p class="text-muted small mb-0">3,005 Customers (33.58% Market Share)</p>
+        </div>
+        <span class="badge badge-amber">High Risk</span>
+      </div>
+
+      <div class="row g-2 mb-3 text-center">
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Balance</div><div class="fw-bold text-danger">$2,477</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Cash Advance</div><div class="fw-bold text-amber">$2,138</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Credit Limit</div><div class="fw-bold text-info">$4,400</div></div></div>
+      </div>
+
+      <p class="small text-secondary mb-3">
+        Heavy reliance on cash advances, minimal purchase activity, high interest exposure, and lower full payment ratios. Exhibits elevated credit risk.
+      </p>
+
+      <div class="p-3 border rounded-3 bg-danger bg-opacity-10">
+        <h6 class="fw-bold text-danger mb-1"><i class="fa-solid fa-shield-halved me-2"></i> Risk Management Strategy</h6>
+        <p class="small mb-0 text-secondary">Implement liquidity distress alerts, cap cash withdrawal limits, offer balance transfer APR reduction incentives, and debt restructuring.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cluster 3: Budget Installments -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 h-100 border-start border-4 border-emerald">
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <span class="badge badge-emerald text-uppercase mb-2">Cluster 3 • Installment Tier</span>
+          <h4 class="fw-bold mb-1"><i class="fa-solid fa-bag-shopping text-emerald me-2"></i> Budget Installment Buyers</h4>
+          <p class="text-muted small mb-0">2,191 Customers (24.48% Market Share)</p>
+        </div>
+        <span class="badge badge-emerald">Low Risk</span>
+      </div>
+
+      <div class="row g-2 mb-3 text-center">
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Balance</div><div class="fw-bold text-indigo">$644</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Purchases</div><div class="fw-bold text-emerald">$695</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Credit Limit</div><div class="fw-bold text-info">$3,025</div></div></div>
+      </div>
+
+      <p class="small text-secondary mb-3">
+        Frequent installment purchases, moderate balances, steady monthly payment habits. Highly responsive to structured merchant financing offers.
+      </p>
+
+      <div class="p-3 border rounded-3 bg-success bg-opacity-10">
+        <h6 class="fw-bold text-emerald mb-1"><i class="fa-solid fa-tags me-2"></i> Marketing & Cross-Sell Strategy</h6>
+        <p class="small mb-0 text-secondary">Partner with top e-commerce platforms to offer zero-EMI merchant financing, cashback incentives on tech purchases, and installment rewards.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cluster 0: Low Engagement -->
+  <div class="col-lg-6">
+    <div class="glass-card p-4 h-100 border-start border-4 border-secondary">
+      <div class="d-flex justify-content-between align-items-start mb-3">
+        <div>
+          <span class="badge badge-purple text-uppercase mb-2">Cluster 0 • Inactive Tier</span>
+          <h4 class="fw-bold mb-1"><i class="fa-solid fa-bed text-secondary me-2"></i> Low Engagement Cardholders</h4>
+          <p class="text-muted small mb-0">1,472 Customers (16.45% Market Share)</p>
+        </div>
+        <span class="badge badge-indigo">Moderate Risk</span>
+      </div>
+
+      <div class="row g-2 mb-3 text-center">
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Balance</div><div class="fw-bold text-secondary">$115</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Avg Purchases</div><div class="fw-bold text-secondary">$356</div></div></div>
+        <div class="col-4"><div class="p-2 border rounded bg-dark bg-opacity-20"><div class="small text-muted">Credit Limit</div><div class="fw-bold text-info">$3,639</div></div></div>
+      </div>
+
+      <p class="small text-secondary mb-3">
+        Low balance, minimal purchase frequency, under-utilized credit lines. Represents dormant portfolio capacity needing re-activation.
+      </p>
+
+      <div class="p-3 border rounded-3 bg-purple bg-opacity-10">
+        <h6 class="fw-bold text-purple mb-1"><i class="fa-solid fa-bullhorn me-2"></i> Portfolio Re-activation Strategy</h6>
+        <p class="small mb-0 text-secondary">Deploy automated email/SMS campaigns offering a $20 statement credit upon spending $100 within 30 days, annual fee waivers, and introductory cashback.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
